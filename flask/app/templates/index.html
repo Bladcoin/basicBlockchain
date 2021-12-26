@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="mt-5 w-25 mx-auto">
+        <form action="{{ url_for('index') }}" method="POST">
+            <div class="mb-3">
+                <label for="sender" class="form-label">Отправитель</label>
+                <input type="text" class="form-control" id="sender" placeholder="Имя" name="sender">
+            </div>
+            <div class="mb-3">
+                <label for="amount" class="form-label">Сумма</label>
+                <input type="text" class="form-control" id="amount" placeholder="Сумма" name="amount">
+            </div>
+            <div class="mb-3">
+                <label for="reciept" class="form-label">Получатель</label>
+                <input type="text" class="form-control" id="reciept" placeholder="Имя" name="reciept">
+            </div>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+    </div>
+    <div class="mt-5 w-25 mx-auto text-center">
+        <form action="/check" method="GET">
+            <button type="submit" class="btn btn-success">Проверить</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block list %}
+<div class="mx-auto w-25 mt-5">
+    {% for res in results %}
+        <h6>This block {{ res[0]}} is {{ res[1]}} </h6>
+    {% endfor %}
+</div>
+
+{% endblock %}
